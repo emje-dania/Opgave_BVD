@@ -20,11 +20,17 @@ namespace Opgave_BVD
             Console.WriteLine("type a number between 1 and 100 in order to guess the randomized number");
             Console.WriteLine("the game will tell you how close you are");
             Console.WriteLine("press enter when you are ready");
+            Console.ReadLine();
 
             //the player picks a number
             Console.WriteLine("type a number between 1 and 100");
             int playerNumber = int.Parse(Console.ReadLine());
 
+            // Random number generator
+            Random randomNumber = new Random();
+            int rnd = randomNumber.Next(1, 101);
+            
+            Console.WriteLine("the random number is:  "+rnd);
 
 
             Console.ReadLine();
