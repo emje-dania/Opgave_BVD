@@ -17,6 +17,7 @@ namespace Opgave_BVD
             int max = 100;
             int guess;
             int tries;
+            string response;
 
             //create / in the game
             while (play)
@@ -38,8 +39,10 @@ namespace Opgave_BVD
                 //Player picks a number
                 Console.WriteLine("type a number between 1 and 100");
 
+                // these are set to 0 in order to be reset
                 guess = 0;
                 tries = 0;
+                response = "";
 
                 // as long as the guess is not equal to the random number the guessing continues
                 while (guess != rnd)
@@ -60,17 +63,24 @@ namespace Opgave_BVD
                     {
                         Console.WriteLine(playerNumber + " is too low");
                     }
-                    else
-                    {
-                        // when guess correct you get the score (so to speak)
-                        Console.WriteLine("Number: " + rnd);
-                        Console.WriteLine("You Win!!");
-                        Console.WriteLine("Tries: " + tries);
-                    }
                     tries++;
-                    
+
                 }
-                
+
+                // Now to make the game replayable. "ToUpper" makes it so that the answer stays uppercase
+                Console.WriteLine("Play again? (Y/N)");
+                response = Console.ReadLine();
+                response = response.ToUpper();
+
+                // if Y then restart the game. if N then say goodbye
+                if (response == "Y")
+                {
+                    play = true;
+                }
+                else
+                {
+                    play = false;
+                }
             }
             
 
