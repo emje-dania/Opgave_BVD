@@ -67,10 +67,18 @@ namespace Opgave_BVD
                     tries++;
 
                 }
+                // changing the background color so the score stands out more
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Black;
+
                 //Play found the random number and can now see there 'score'
                 Console.WriteLine("Number: " + rnd);
                 Console.WriteLine("You Win!!");
                 Console.WriteLine("Tries: " +tries);
+
+                //Change the Backgound color back to normal
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
 
                 // Now to make the game replayable. "ToUpper" makes it so that the answer stays uppercase
                 Console.WriteLine("Play again? (Y/N)");
