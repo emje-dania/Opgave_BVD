@@ -60,12 +60,17 @@ namespace Opgave_BVD
                     {
                         Console.WriteLine(playerNumber + " is too low");
                     }
+                    else
+                    {
+                        // when guess correct you get the score (so to speak)
+                        Console.WriteLine("Number: " + rnd);
+                        Console.WriteLine("You Win!!");
+                        Console.WriteLine("Tries: " + tries);
+                    }
                     tries++;
+                    
                 }
-                // when guess correct you get the score (so to speak)
-                Console.WriteLine("Number: " + rnd);
-                Console.WriteLine("You Win!!");
-                Console.WriteLine("Tries: " + tries);
+                
             }
             
 
