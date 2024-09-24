@@ -15,57 +15,62 @@ namespace Opgave_BVD
             bool play = true;
             int min = 1;
             int max = 100;
+            int rnd;
             int guess;
             int tries;
             string response;
 
+            //Start with into and ask for name
+            Console.WriteLine("Hello new player, please enter you name");
+            name = Console.ReadLine();
+
+            Console.WriteLine($"Welcome {name}, the rules are simple");
+            Console.WriteLine("type a number between 1 and 100 in order to guess the randomized number");
+            Console.WriteLine("the game will tell you how close you are");
+            Console.WriteLine("press enter when you are ready");
+            Console.ReadLine();
+
             //create / in the game
             while (play)
             {
-                //Start with into and ask for name
-                Console.WriteLine("Hello new player, please enter you name");
-                name = Console.ReadLine();
-
-                Console.WriteLine($"Welcome {name}, the rules are simple");
-                Console.WriteLine("type a number between 1 and 100 in order to guess the randomized number");
-                Console.WriteLine("the game will tell you how close you are");
-                Console.WriteLine("press enter when you are ready");
-                Console.ReadLine();
-
-                // Create a random number
-                Random randomNumber = new Random();
-                int rnd = randomNumber.Next(min, max + 1);
-
-                //Player picks a number
-                Console.WriteLine("type a number between 1 and 100");
-
                 // these are set to 0 in order to be reset
                 guess = 0;
                 tries = 0;
                 response = "";
+                
+
+                // Create a random number
+                Random randomNumber = new Random();
+                rnd = randomNumber.Next(min, max + 1);
+
+                //Te player picks there first number
+                Console.WriteLine("Guess a number between 1 - 100");
 
                 // as long as the guess is not equal to the random number the guessing continues
                 while (guess != rnd)
                 {
 
-                  
-                    //the player have picked a number and keeps picking 
-                    int playerNumber = Convert.ToInt32(Console.ReadLine());
+                    //the number the player picked gets defined                   
+                    guess = Convert.ToInt32(Console.ReadLine());
 
-                    Console.WriteLine("Guess: " + playerNumber);
+                    Console.WriteLine("Guess: " + guess);
 
                     //Use an if statement to choose what happens when the guess is too high or low
-                    if (playerNumber > rnd)
+                    if (guess> rnd)
                     {
-                        Console.WriteLine(playerNumber + " is too high");
+                        Console.WriteLine(guess + " is too high");
                     }
-                    else if (playerNumber < rnd)
+                    else if (guess < rnd)
                     {
-                        Console.WriteLine(playerNumber + " is too low");
+                        Console.WriteLine(guess + " is too low");
                     }
                     tries++;
 
                 }
+                //Play found the random number and can now see there 'score'
+                Console.WriteLine("Number: " + rnd);
+                Console.WriteLine("You Win!!");
+                Console.WriteLine("Tries: " +tries);
 
                 // Now to make the game replayable. "ToUpper" makes it so that the answer stays uppercase
                 Console.WriteLine("Play again? (Y/N)");
@@ -81,15 +86,11 @@ namespace Opgave_BVD
                 {
                     play = false;
                 }
+                
             }
-            
+            Console.WriteLine("Thank you for playing");
+            Console.ReadKey();
 
-            
-
-
-
-
-            Console.ReadLine();
         }
     }
 }
