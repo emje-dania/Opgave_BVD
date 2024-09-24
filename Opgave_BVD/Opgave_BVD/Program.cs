@@ -12,16 +12,16 @@ namespace Opgave_BVD
         {
             // Varible list 
             string name;
-            bool restart = true;
+            bool play = true;
             int min = 1;
             int max = 100;
+            int guess;
             int tries;
 
             //create / in the game
-            while (restart)
+            while (play)
             {
                 //Start with into and ask for name
-
                 Console.WriteLine("Hello new player, please enter you name");
                 name = Console.ReadLine();
 
@@ -35,21 +35,37 @@ namespace Opgave_BVD
                 Random randomNumber = new Random();
                 int rnd = randomNumber.Next(min, max + 1);
 
-                //the player picks a number
+                //Player picks a number
                 Console.WriteLine("type a number between 1 and 100");
-                int playerNumber = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Guess: " + playerNumber);
+                guess = 0;
+                tries = 0;
 
-                //Use an if statement to choose what happens when the guess is too high or low
-                if (playerNumber > rnd)
+                // as long as the guess is not equal to the random number the guessing continues
+                while (guess != rnd)
                 {
-                    Console.WriteLine(playerNumber + " is too high");
-                } 
-                else if (playerNumber < rnd)
-                {
-                    Console.WriteLine(playerNumber + " is too low");
+
+                  
+                    //the player have picked a number and keeps picking 
+                    int playerNumber = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Guess: " + playerNumber);
+
+                    //Use an if statement to choose what happens when the guess is too high or low
+                    if (playerNumber > rnd)
+                    {
+                        Console.WriteLine(playerNumber + " is too high");
+                    }
+                    else if (playerNumber < rnd)
+                    {
+                        Console.WriteLine(playerNumber + " is too low");
+                    }
+                    tries++;
                 }
+                // when guess correct you get the score (so to speak)
+                Console.WriteLine("Number: " + rnd);
+                Console.WriteLine("You Win!!");
+                Console.WriteLine("Tries: " + tries);
             }
             
 
